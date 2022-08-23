@@ -1,9 +1,11 @@
 import { React } from 'react';
 import './App.scss';
+import Name from './components/Name';
 
-const App = () =>
+const App = (context) =>
+
 	<div className="App" role="App">
-		Ready to start.
+		<Name { ...context }/>
 	</div>;
 
 export default App;

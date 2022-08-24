@@ -11,6 +11,11 @@ const studentManager = {
 			Maths: maths,
 		}],
 
+	clearInputFields: ({ state }) =>
+		({
+			...state, name: '', subjects: { tamil: '', english: '', maths: '' },
+		}),
+
 };
 
 export default studentManager;

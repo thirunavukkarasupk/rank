@@ -3,15 +3,14 @@ const setName = ({ data }) =>
 		name: data,
 	});
 
-const addToStudentDetails = ({ state: { studentDetails }, data }) =>
+const setMark = ({ state: { subjects }, data: { subjectName, mark }}) =>
 	({
-		studentDetails: [...studentDetails, data],
-		name: '',
+		subjects: { ...subjects, [subjectName]: mark },
 	});
 
 const actions = {
 	setName,
-	addToStudentDetails,
+	setMark,
 };
 
 export default actions;

@@ -1,8 +1,8 @@
 const seed = {
 	name: '',
-	tamil: '',
-	english: '',
-	maths: '',
+	subjects: { tamil: '',
+		english: '',
+		maths: '' },
 	studentDetails: [],
 };
 

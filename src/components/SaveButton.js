@@ -5,7 +5,10 @@ const SaveButton = (context) => {
 
 	return (
 		<button
-			onClick={ () => actions.saveTheStudentDetails(context) }
+			onClick={ () => {
+				actions.saveTheStudentDetails();
+				actions.clearInputFields();
+			} }
 		>Save
 		</button>);
 };

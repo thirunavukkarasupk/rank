@@ -16,6 +16,9 @@ const studentManager = {
 			...state, name: '', subjects: { tamil: '', english: '', maths: '' },
 		}),
 
+	hasEmptyFields: ({ state: { name, subjects }}) =>
+		[name, ...Object.values(subjects)].includes(''),
+
 };
 
 export default studentManager;

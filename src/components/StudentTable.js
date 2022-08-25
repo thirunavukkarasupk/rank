@@ -2,17 +2,17 @@ import React from 'react';
 
 const StudentTable = (context) => {
 	const { data:
-		{ Student, RollNo, Tamil, English, Maths }} = context;
+		{ student, rollNo, tamil, english, maths }} = context;
 
 	return (
 		<table>
 			<tbody>
 				<tr>
-					<td>{Student}</td>
-					<td>{RollNo}</td>
-					<td>{Tamil}</td>
-					<td>{English}</td>
-					<td>{Maths}</td>
+					<td>{student}</td>
+					<td>{rollNo}</td>
+					<td>{tamil}</td>
+					<td>{english}</td>
+					<td>{maths}</td>
 				</tr>
 			</tbody>
 		</table>

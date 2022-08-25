@@ -4,8 +4,8 @@ const studentManager = {
 	getStudentDetails: ({ config: { rollMin, rollMax },
 		state: { name, studentDetails, subjects: { tamil, english, maths }}}) =>
 		[...studentDetails, {
-			rollNo: rndBetween(rollMin, rollMax),
 			student: name,
+			rollNo: rndBetween(rollMin, rollMax),
 			tamil: tamil,
 			english: english,
 			maths: maths,

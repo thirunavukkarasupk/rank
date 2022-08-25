@@ -1,19 +1,21 @@
 import React from 'react';
 
 const StudentTable = (context) => {
-	const { data:
-		{ student, rollNo, tamil, english, maths }} = context;
+	const { config: { header }, state: { studentDetails }} = context;
 
 	return (
 		<table>
 			<tbody>
 				<tr>
-					<td>{student}</td>
-					<td>{rollNo}</td>
-					<td>{tamil}</td>
-					<td>{english}</td>
-					<td>{maths}</td>
+					{header.map((element, index) =>
+						<th key={ index }>{element}</th>)}
 				</tr>
+				{studentDetails.map((student) =>
+					<tr key={ student.rollNo }>
+						{Object.values(student).map((detail, index) =>
+							<td key={ index }>{detail}</td>)}
+					</tr>)}
+
 			</tbody>
 		</table>
 	);

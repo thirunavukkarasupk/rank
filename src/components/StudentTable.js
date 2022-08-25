@@ -1,3 +1,4 @@
+import { values } from '@laufire/utils/lib';
 import React from 'react';
 
 const StudentTable = (context) => {
@@ -12,7 +13,7 @@ const StudentTable = (context) => {
 				</tr>
 				{studentDetails.map((student) =>
 					<tr key={ student.rollNo }>
-						{Object.values(student).map((detail, index) =>
+						{values(student).map((detail, index) =>
 							<td key={ index }>{detail}</td>)}
 					</tr>)}
 

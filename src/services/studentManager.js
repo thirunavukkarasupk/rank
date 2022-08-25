@@ -1,3 +1,4 @@
+import { values } from '@laufire/utils/collection';
 import { rndBetween } from '@laufire/utils/random';
 
 const studentManager = {
@@ -17,7 +18,7 @@ const studentManager = {
 		}),
 
 	hasEmptyFields: ({ state: { name, subjects }}) =>
-		[name, ...Object.values(subjects)].includes(''),
+		[name, ...values(subjects)].includes(''),
 
 };
 

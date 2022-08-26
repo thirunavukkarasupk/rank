@@ -9,8 +9,7 @@ const SubjectInput = (context) => {
 			<input
 				value={ subjects[subject] }
 				onChange={ (event) =>
-					actions.setMark({ subjectName: subject,
-						mark: event.target.value }) }
+					actions.setMark({ [subject]: Number(event.target.value) }) }
 			/>
 		</label>
 	);

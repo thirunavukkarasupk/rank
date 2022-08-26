@@ -3,23 +3,14 @@ import { rndBetween } from '@laufire/utils/random';
 
 const studentManager = {
 	getStudentDetails: ({ config: { rollMin, rollMax, minMark },
-		state: { name, studentDetails, subjects: { tamil, english, maths }}}) =>
+		state: { name, studentDetails, subjects }}) =>
 		[...studentDetails, {
 			student: name,
 			rollNo: rndBetween(rollMin, rollMax),
-			tamil: tamil,
-			english: english,
-			maths: maths,
-			total: studentManager.calculateTotal([
-				Number(tamil),
-				Number(english),
-				Number(maths),
-			]),
-			result: studentManager.getResult([
-				Number(tamil),
-				Number(english),
-				Number(maths),
-			], minMark),
+			...subjects,
+			total: studentManager.calculateTotal(subjects),
+			result: studentManager
+				.getResult(subjects, minMark),
 		}],
 
 	clearInputFields: ({ state }) =>
@@ -31,10 +22,10 @@ const studentManager = {
 		[name, ...values(subjects)].includes(''),
 
 	calculateTotal: (subjects) =>
-		subjects.reduce((total, curr) => total + curr, 0),
+		values(subjects).reduce((total, curr) => total + curr, 0),
 
 	getResult: (subjects, minMark) =>
-		(subjects.some((ele) => ele < minMark) ? 'FAIL' : 'PASS'),
+		(values(subjects).some((ele) => ele < minMark) ? 'FAIL' : 'PASS'),
 
 };
 

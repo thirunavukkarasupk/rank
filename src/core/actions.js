@@ -5,9 +5,9 @@ const setName = ({ data }) =>
 		name: data,
 	});
 
-const setMark = ({ state: { subjects }, data: { subjectName, mark }}) =>
+const setMark = ({ state: { subjects }, data }) =>
 	({
-		subjects: { ...subjects, [subjectName]: mark },
+		subjects: { ...subjects, ...data },
 	});
 
 const saveTheStudentDetails = (context) =>

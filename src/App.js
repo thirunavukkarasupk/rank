@@ -1,6 +1,6 @@
 import { React } from 'react';
 import './App.scss';
-import Name from './components/Name';
+import Name from './components/NameInput';
 import MarksInput from './components/MarksInput';
 import SaveButton from './components/SaveButton';
 import StudentTable from './components/StudentTable';

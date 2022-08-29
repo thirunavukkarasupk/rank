@@ -10,6 +10,7 @@ const config = {
 		'Maths',
 		'Total',
 		'Result'],
+	options: ['PASS', 'FAIL'],
 };
 
 export default config;

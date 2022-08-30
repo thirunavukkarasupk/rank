@@ -18,11 +18,17 @@ const saveTheStudentDetails = (context) =>
 const clearInputFields = (context) =>
 	studentManager.clearInputFields(context);
 
+const passOrFail = (context) =>
+	({
+		filteredStudentDetails: studentManager.passOrFail(context),
+	});
+
 const actions = {
 	setName,
 	setMark,
 	saveTheStudentDetails,
 	clearInputFields,
+	passOrFail,
 };
 
 export default actions;

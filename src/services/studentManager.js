@@ -27,6 +27,8 @@ const studentManager = {
 	getResult: (subjects, minMark) =>
 		(values(subjects).some((ele) => ele < minMark) ? 'FAIL' : 'PASS'),
 
+	passOrFail: ({ state: { studentDetails }, data }) =>
+		studentDetails.filter((student) => student.result === data),
 };
 
 export default studentManager;

@@ -7,10 +7,10 @@ const seed = {
 		student: 'Idha',
 		rollNo: 2345,
 		tamil: 45,
-		english: 55,
+		english: 14,
 		maths: 65,
 		total: 165,
-		result: 'PASS',
+		result: 'FAIL',
 	}, {
 		student: 'Nannan',
 		rollNo: 3245,
@@ -20,6 +20,7 @@ const seed = {
 		total: 220,
 		result: 'PASS',
 	}],
+	filteredStudentDetails: [],
 };
 
 export default seed;

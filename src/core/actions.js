@@ -18,9 +18,9 @@ const saveTheStudentDetails = (context) =>
 const clearInputFields = (context) =>
 	studentManager.clearInputFields(context);
 
-const passOrFail = (context) =>
+const setFilter = ({ data }) =>
 	({
-		filteredStudentDetails: studentManager.passOrFail(context),
+		filter: data,
 	});
 
 const actions = {
@@ -28,7 +28,7 @@ const actions = {
 	setMark,
 	saveTheStudentDetails,
 	clearInputFields,
-	passOrFail,
+	setFilter,
 };
 
 export default actions;

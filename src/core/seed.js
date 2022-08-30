@@ -1,3 +1,5 @@
+import config from './config';
+
 const seed = {
 	name: '',
 	subjects: { tamil: '',
@@ -20,7 +22,7 @@ const seed = {
 		total: 220,
 		result: 'PASS',
 	}],
-	filteredStudentDetails: [],
+	filter: config.options[0],
 };
 
 export default seed;

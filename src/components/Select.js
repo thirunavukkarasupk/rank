@@ -2,11 +2,12 @@
 import React from 'react';
 
 const Select = (context) => {
-	const { actions, config: { options }} = context;
+	const { actions, config: { options }, state: { filter }} = context;
 
 	return (
 		<select
-			onChange={ (event) => actions.passOrFail(event.target.value) }
+			value={ filter }
+			onChange={ (event) => actions.setFilter(event.target.value) }
 		>
 			{options.map((element, index) =>
 				<option key={ index } value={ element }>{element}</option>)}

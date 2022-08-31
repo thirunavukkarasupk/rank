@@ -8,6 +8,9 @@ describe('studentManager', () => {
 		getStudentDetails,
 		clearInputFields,
 		hasEmptyFields,
+		calculateTotal,
+		getResult,
+		passOrFail,
 	} = studentManager;
 
 	test('get Student Details', () => {
@@ -50,7 +53,7 @@ describe('studentManager', () => {
 		]);
 	});
 
-	test('clear Input Fields', () => {
+	test('clear input fields', () => {
 		const context = {
 			seed,
 		};
@@ -62,12 +65,12 @@ describe('studentManager', () => {
 		});
 	});
 
-	describe('HasEmptyFields', () => {
-		test('No Field is Empty', () => {
+	describe('has empty fields', () => {
+		test('returns false when the values are not empty ', () => {
 			const context = {
 				state: {
 					name: Symbol('name'),
-					subjects: Symbol('subjects'),
+					subjects: { tamil: Symbol('tamil') },
 				},
 			};
 
@@ -76,17 +79,90 @@ describe('studentManager', () => {
 			expect(result).toEqual(false);
 		});
 
-		test('One Or More Fields Are Empty', () => {
+		test('returns true when the one or more values are  empty ', () => {
 			const context = {
 				state: {
 					name: '',
-					subjects: Symbol('subjects'),
+					subjects: { tamil: Symbol('tamil') },
 				},
 			};
 
 			const result = hasEmptyFields(context);
 
 			expect(result).toEqual(true);
+		});
+	});
+
+	test('calculate the total', () => {
+		const subjects = { tamil: 1, english: 2, maths: 3 };
+
+		const result = calculateTotal(subjects);
+
+		expect(result)
+			.toEqual(subjects.tamil + subjects.english + subjects.maths);
+	});
+
+	describe('getTheResultOfTheStudent', () => {
+		const minMark = 35;
+
+		test('Mark Is Less Than 35 In One Or More Subjects', () => {
+			const subjects = { tamil: 5, english: 100, maths: 50 };
+
+			const result = getResult(subjects, minMark);
+
+			expect(result).toEqual('FAIL');
+		});
+
+		test('all The Subject Marks Are Above 35', () => {
+			const subjects = { tamil: 35, english: 100, maths: 50 };
+
+			const result = getResult(subjects, minMark);
+
+			expect(result).toEqual('PASS');
+		});
+	});
+
+	describe('filter based on pass or fail', () => {
+		const failData = {
+			student: 'Idha',
+			rollNo: 2345,
+			tamil: 45,
+			english: 14,
+			maths: 65,
+			total: 165,
+			result: 'FAIL',
+		};
+		const passData = {
+			student: 'Nannan',
+			rollNo: 3245,
+			tamil: 65,
+			english: 75,
+			maths: 80,
+			total: 220,
+			result: 'PASS',
+		};
+		const studentDetails = [passData, failData];
+
+		test('filter based on pass', () => {
+			const state = {
+				studentDetails: studentDetails,
+				filter: 'PASS',
+			};
+
+			const result = passOrFail({ state });
+
+			expect(result).toEqual([passData]);
+		});
+
+		test('filter based on fail', () => {
+			const state = {
+				studentDetails: studentDetails,
+				filter: 'FAIL',
+			};
+
+			const result = passOrFail({ state });
+
+			expect(result).toEqual([failData]);
 		});
 	});
 });

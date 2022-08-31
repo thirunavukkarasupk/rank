@@ -13,9 +13,10 @@ const studentManager = {
 				.getResult(subjects, minMark),
 		}],
 
-	clearInputFields: ({ state }) =>
+	clearInputFields: ({ seed: { subjects }}) =>
 		({
-			...state, name: '', subjects: { tamil: '', english: '', maths: '' },
+			name: '',
+			subjects: subjects,
 		}),
 
 	hasEmptyFields: ({ state: { name, subjects }}) =>

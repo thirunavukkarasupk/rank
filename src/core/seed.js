@@ -2,9 +2,8 @@ import config from './config';
 
 const seed = {
 	name: '',
-	subjects: { tamil: '',
-		english: '',
-		maths: '' },
+	subjects: config.subjects.reduce((acc, curr) =>
+		({ ...acc, [curr]: '' }), {}),
 	studentDetails: [{
 		student: 'Idha',
 		rollNo: 2345,

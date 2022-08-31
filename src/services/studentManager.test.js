@@ -1,9 +1,10 @@
 import studentManager from './studentManager';
 import * as random from '@laufire/utils/random';
 import config from '../core/config.js';
+import seed from '../core/seed.js';
 
 describe('studentManager', () => {
-	const { getStudentDetails } = studentManager;
+	const { getStudentDetails, clearInputFields } = studentManager;
 
 	test('get Student Details', () => {
 		const context = {
@@ -43,5 +44,17 @@ describe('studentManager', () => {
 				result: pOrF,
 			},
 		]);
+	});
+
+	test('clear Input Fields', () => {
+		const context = {
+			seed,
+		};
+		const result = clearInputFields(context);
+
+		expect(result).toEqual({
+			name: '',
+			subjects: context.seed.subjects,
+		});
 	});
 });

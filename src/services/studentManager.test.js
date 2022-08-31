@@ -4,7 +4,11 @@ import config from '../core/config.js';
 import seed from '../core/seed.js';
 
 describe('studentManager', () => {
-	const { getStudentDetails, clearInputFields } = studentManager;
+	const {
+		getStudentDetails,
+		clearInputFields,
+		hasEmptyFields,
+	} = studentManager;
 
 	test('get Student Details', () => {
 		const context = {
@@ -55,6 +59,34 @@ describe('studentManager', () => {
 		expect(result).toEqual({
 			name: '',
 			subjects: context.seed.subjects,
+		});
+	});
+
+	describe('HasEmptyFields', () => {
+		test('No Field is Empty', () => {
+			const context = {
+				state: {
+					name: Symbol('name'),
+					subjects: Symbol('subjects'),
+				},
+			};
+
+			const result = hasEmptyFields(context);
+
+			expect(result).toEqual(false);
+		});
+
+		test('One Or More Fields Are Empty', () => {
+			const context = {
+				state: {
+					name: '',
+					subjects: Symbol('subjects'),
+				},
+			};
+
+			const result = hasEmptyFields(context);
+
+			expect(result).toEqual(true);
 		});
 	});
 });

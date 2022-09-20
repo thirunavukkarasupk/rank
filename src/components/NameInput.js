@@ -7,6 +7,7 @@ const Name = (context) => {
 		<>
 			<span>StudentName</span>
 			<input
+				role="nameInput"
 				value={ name }
 				onChange={ (event) => actions.setName(event.target.value) }
 			/>

@@ -7,6 +7,7 @@ const SaveButton = (context) => {
 
 	return !studentManager.hasEmptyFields(context)
 	&& <button
+		role="saveButton"
 		onClick={ () => {
 			actions.saveTheStudentDetails();
 			actions.clearInputFields();

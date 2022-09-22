@@ -5,7 +5,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { rndString } from '@laufire/utils/random';
 
-test.only('StudentTable', () => {
+test('StudentTable', () => {
 	const context = {
 		config: { header: [rndString(), rndString()] },
 		state: { studentDetails: Symbol('studentDetails') },

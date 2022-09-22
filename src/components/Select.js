@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Select = (context) => {
@@ -6,11 +5,16 @@ const Select = (context) => {
 
 	return (
 		<select
+			role="select"
 			value={ filter }
-			onChange={ (event) => actions.setFilter(event.target.value) }
+			onChange={ (event) => {
+				actions.setFilter(event.target.value);
+			} }
 		>
 			{options.map((element, index) =>
-				<option key={ index } value={ element }>{element}</option>)}
+				<option key={ index } role="option" value={ element }>
+					{element}
+				</option>)}
 
 		</select>);
 };

@@ -1,25 +1,23 @@
-import { values } from '@laufire/utils/lib';
 import React from 'react';
+import TableHeader from './TableHeader';
+import StudentTableRow from './StudentTableRow';
 
 const StudentTable = (context) => {
 	const { config: { header }, state: { studentDetails }} = context;
 
 	return (
-		<table>
+		<table role="table">
 			<tbody>
 				<tr>
 					{header.map((element, index) =>
-						<th key={ index }>{element}</th>)}
+						<TableHeader
+							key={ index }
+							{ ...{ ...context, data: element } }
+						/>)}
 				</tr>
-				{studentDetails.map((student) =>
-					<tr key={ student.rollNo }>
-						{values(student).map((detail, index) =>
-							<td key={ index }>{detail}</td>)}
-					</tr>)}
-
+				<StudentTableRow { ...{ ...context, data: studentDetails } }/>
 			</tbody>
-		</table>
-	);
+		</table>);
 };
 
 export default StudentTable;
